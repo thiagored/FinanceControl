@@ -32,7 +32,7 @@ export default function AuthPage() {
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
     registerMutation.mutate({
-      name: registerForm.name,
+      username: registerForm.name,
       email: registerForm.email,
       password: registerForm.password
     });
