@@ -24,7 +24,7 @@ export default function AuthPage() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     loginMutation.mutate({
-      username: loginForm.email, // Note: backend expects username but we use email
+      username: loginForm.email,
       password: loginForm.password
     });
   };
@@ -32,7 +32,7 @@ export default function AuthPage() {
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
     registerMutation.mutate({
-      username: registerForm.name,
+      username: registerForm.email,
       email: registerForm.email,
       password: registerForm.password
     });
