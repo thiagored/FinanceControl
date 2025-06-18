@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(210, 11%, 15%);
+  --muted: hsl(210, 40%, 98%);
+  --muted-foreground: hsl(215, 13%, 65%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(210, 11%, 15%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(210, 11%, 15%);
+  --border: hsl(214, 32%, 91%);
+  --input: hsl(214, 32%, 91%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(210, 100%, 98%);
+  --secondary: hsl(210, 40%, 98%);
+  --secondary-foreground: hsl(215, 25%, 27%);
+  --accent: hsl(210, 40%, 98%);
+  --accent-foreground: hsl(215, 25%, 27%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --ring: hsl(215, 25%, 27%);
+  --chart-1: hsl(207, 90%, 54%);
+  --chart-2: hsl(120, 61%, 50%);
+  --chart-3: hsl(35, 91%, 65%);
+  --chart-4: hsl(291, 64%, 42%);
+  --chart-5: hsl(200, 18%, 46%);
+  --success-50: hsl(120, 60%, 96%);
+  --success-100: hsl(120, 60%, 91%);
+  --success-500: hsl(120, 61%, 50%);
+  --success-600: hsl(120, 57%, 40%);
+  --warning-50: hsl(35, 100%, 96%);
+  --warning-100: hsl(35, 100%, 89%);
+  --warning-500: hsl(35, 91%, 65%);
+  --warning-600: hsl(35, 84%, 54%);
+  --error-50: hsl(0, 86%, 97%);
+  --error-100: hsl(0, 93%, 94%);
+  --error-500: hsl(0, 84%, 60%);
+  --error-600: hsl(0, 72%, 51%);
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: hsl(224, 71%, 4%);
+  --foreground: hsl(213, 31%, 91%);
+  --muted: hsl(223, 47%, 11%);
+  --muted-foreground: hsl(215, 13%, 65%);
+  --popover: hsl(224, 71%, 4%);
+  --popover-foreground: hsl(213, 31%, 91%);
+  --card: hsl(224, 71%, 4%);
+  --card-foreground: hsl(213, 31%, 91%);
+  --border: hsl(216, 34%, 17%);
+  --input: hsl(216, 34%, 17%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(210, 100%, 98%);
+  --secondary: hsl(223, 47%, 11%);
+  --secondary-foreground: hsl(213, 31%, 91%);
+  --accent: hsl(223, 47%, 11%);
+  --accent-foreground: hsl(213, 31%, 91%);
+  --destructive: hsl(0, 63%, 31%);
+  --destructive-foreground: hsl(213, 31%, 91%);
+  --ring: hsl(216, 34%, 17%);
+  --chart-1: hsl(207, 90%, 54%);
+  --chart-2: hsl(120, 61%, 50%);
+  --chart-3: hsl(35, 91%, 65%);
+  --chart-4: hsl(291, 64%, 42%);
+  --chart-5: hsl(200, 18%, 46%);
+  --success-50: hsl(120, 60%, 96%);
+  --success-100: hsl(120, 60%, 91%);
+  --success-500: hsl(120, 61%, 50%);
+  --success-600: hsl(120, 57%, 40%);
+  --warning-50: hsl(35, 100%, 96%);
+  --warning-100: hsl(35, 100%, 89%);
+  --warning-500: hsl(35, 91%, 65%);
+  --warning-600: hsl(35, 84%, 54%);
+  --error-50: hsl(0, 86%, 97%);
+  --error-100: hsl(0, 93%, 94%);
+  --error-500: hsl(0, 84%, 60%);
+  --error-600: hsl(0, 72%, 51%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-success-50 { color: hsl(var(--success-50)); }
+  .text-success-100 { color: hsl(var(--success-100)); }
+  .text-success-500 { color: hsl(var(--success-500)); }
+  .text-success-600 { color: hsl(var(--success-600)); }
+  .bg-success-50 { background-color: hsl(var(--success-50)); }
+  .bg-success-100 { background-color: hsl(var(--success-100)); }
+  .bg-success-500 { background-color: hsl(var(--success-500)); }
+  .bg-success-600 { background-color: hsl(var(--success-600)); }
+  .border-success-200 { border-color: hsl(var(--success-100)); }
+  
+  .text-warning-50 { color: hsl(var(--warning-50)); }
+  .text-warning-100 { color: hsl(var(--warning-100)); }
+  .text-warning-500 { color: hsl(var(--warning-500)); }
+  .text-warning-600 { color: hsl(var(--warning-600)); }
+  .bg-warning-50 { background-color: hsl(var(--warning-50)); }
+  .bg-warning-100 { background-color: hsl(var(--warning-100)); }
+  .bg-warning-500 { background-color: hsl(var(--warning-500)); }
+  .bg-warning-600 { background-color: hsl(var(--warning-600)); }
+  .border-warning-200 { border-color: hsl(var(--warning-100)); }
+  
+  .text-error-50 { color: hsl(var(--error-50)); }
+  .text-error-100 { color: hsl(var(--error-100)); }
+  .text-error-500 { color: hsl(var(--error-500)); }
+  .text-error-600 { color: hsl(var(--error-600)); }
+  .bg-error-50 { background-color: hsl(var(--error-50)); }
+  .bg-error-100 { background-color: hsl(var(--error-100)); }
+  .bg-error-500 { background-color: hsl(var(--error-500)); }
+  .bg-error-600 { background-color: hsl(var(--error-600)); }
+  .border-error-200 { border-color: hsl(var(--error-100)); }
+}
