@@ -1,92 +1,16 @@
-import { Switch, Route, useLocation } from "wouter";
-import { queryClient } from "./lib/queryClient";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { AuthProvider, useAuth } from "@/hooks/use-auth";
-import { Loader2 } from "lucide-react";
-import AuthPage from "@/pages/auth-page";
-import Dashboard from "@/pages/dashboard";
-import Accounts from "@/pages/accounts";
-import Transactions from "@/pages/transactions";
-import Cards from "@/pages/cards";
-import Forecasts from "@/pages/forecasts";
-import Simulations from "@/pages/simulations";
-import Reports from "@/pages/reports";
-
-function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const { user, isLoading } = useAuth();
-  const [, setLocation] = useLocation();
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <Loader2 className="h-8 w-8 animate-spin" />
-      </div>
-    );
-  }
-
-  if (!user) {
-    setLocation("/auth");
-    return null;
-  }
-
-  return <>{children}</>;
-}
-
-function Router() {
-  return (
-    <Switch>
-      <Route path="/auth" component={AuthPage} />
-      <Route path="/accounts">
-        <ProtectedRoute>
-          <Accounts />
-        </ProtectedRoute>
-      </Route>
-      <Route path="/transactions">
-        <ProtectedRoute>
-          <Transactions />
-        </ProtectedRoute>
-      </Route>
-      <Route path="/cards">
-        <ProtectedRoute>
-          <Cards />
-        </ProtectedRoute>
-      </Route>
-      <Route path="/forecasts">
-        <ProtectedRoute>
-          <Forecasts />
-        </ProtectedRoute>
-      </Route>
-      <Route path="/simulations">
-        <ProtectedRoute>
-          <Simulations />
-        </ProtectedRoute>
-      </Route>
-      <Route path="/reports">
-        <ProtectedRoute>
-          <Reports />
-        </ProtectedRoute>
-      </Route>
-      <Route path="/">
-        <ProtectedRoute>
-          <Dashboard />
-        </ProtectedRoute>
-      </Route>
-    </Switch>
-  );
-}
-
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
-      </AuthProvider>
-    </QueryClientProvider>
+    <div className="min-h-screen bg-gray-50">
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+          <h1 className="text-2xl font-bold text-center mb-6">Sistema Financeiro</h1>
+          <p className="text-center text-gray-600 mb-4">Carregando aplicação...</p>
+          <div className="text-center">
+            <div className="animate-spin inline-block w-6 h-6 border-2 border-blue-500 border-t-transparent rounded-full"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
