@@ -30,6 +30,22 @@ app.use(express.urlencoded({ extended: false }));
 // Serve static files from public directory
 app.use('/public', express.static('public'));
 
+// Simple diagnostic route
+app.get('/test', (req, res) => {
+  res.send(`
+    <html>
+      <head><title>Teste Diagnóstico</title></head>
+      <body style="font-family: Arial; padding: 20px; background: #f0f0f0;">
+        <h1 style="color: green;">✓ Servidor funcionando!</h1>
+        <p>Hora atual: ${new Date().toLocaleString('pt-BR')}</p>
+        <p>User-Agent: ${req.get('User-Agent')}</p>
+        <p>IP: ${req.ip}</p>
+        <button onclick="alert('JavaScript OK!')">Testar JS</button>
+      </body>
+    </html>
+  `);
+});
+
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;

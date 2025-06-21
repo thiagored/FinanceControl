@@ -12,6 +12,40 @@ import {
 } from "@shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Diagnostic route - must be before other routes
+  app.get('/diagnose', (req, res) => {
+    res.send(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Diagnóstico do Sistema</title>
+        <style>
+          body { font-family: Arial; margin: 40px; background: #f5f5f5; }
+          .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+          h1 { color: #28a745; }
+          .info { background: #e9f7ef; padding: 15px; border-radius: 5px; margin: 10px 0; }
+          button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px; }
+          button:hover { background: #0056b3; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <h1>✓ Sistema Funcionando</h1>
+          <div class="info">
+            <strong>Servidor Express:</strong> OK<br>
+            <strong>Hora:</strong> ${new Date().toLocaleString('pt-BR')}<br>
+            <strong>User-Agent:</strong> ${req.get('User-Agent')}<br>
+            <strong>Rota acessada:</strong> ${req.path}
+          </div>
+          <button onclick="alert('JavaScript funcionando!')">Testar JavaScript</button>
+          <button onclick="window.location.href='/'">Voltar para App</button>
+          <button onclick="fetch('/api/user').then(r => alert('API Status: ' + r.status))">Testar API</button>
+        </div>
+      </body>
+      </html>
+    `);
+  });
+
   // Setup authentication routes
   setupAuth(app);
 
