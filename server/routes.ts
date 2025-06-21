@@ -14,11 +14,22 @@ import {
 export async function registerRoutes(app: Express): Promise<Server> {
   // Diagnostic route - must be before other routes
   app.get('/diagnose', (req, res) => {
+    res.set({
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '0',
+      'Access-Control-Allow-Origin': '*',
+      'X-Content-Type-Options': 'nosniff'
+    });
+    
     res.send(`
       <!DOCTYPE html>
       <html>
       <head>
         <title>Diagnóstico do Sistema</title>
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="0">
         <style>
           body { font-family: Arial; margin: 40px; background: #f5f5f5; }
           .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
@@ -26,6 +37,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           .info { background: #e9f7ef; padding: 15px; border-radius: 5px; margin: 10px 0; }
           button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px; }
           button:hover { background: #0056b3; }
+          .troubleshoot { background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 20px 0; }
         </style>
       </head>
       <body>
@@ -37,9 +49,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
             <strong>User-Agent:</strong> ${req.get('User-Agent')}<br>
             <strong>Rota acessada:</strong> ${req.path}
           </div>
+          
+          <div class="troubleshoot">
+            <h3>Soluções para requisições canceladas:</h3>
+            <ol>
+              <li>Desative extensões do Chrome temporariamente</li>
+              <li>Teste em modo anônimo/privado</li>
+              <li>Desative antivírus/firewall temporariamente</li>
+              <li>Teste em outro navegador (Firefox/Edge)</li>
+              <li>Limpe cache e cookies do navegador</li>
+            </ol>
+          </div>
+          
           <button onclick="alert('JavaScript funcionando!')">Testar JavaScript</button>
-          <button onclick="window.location.href='/'">Voltar para App</button>
-          <button onclick="fetch('/api/user').then(r => alert('API Status: ' + r.status))">Testar API</button>
+          <button onclick="window.location.reload()">Recarregar Página</button>
+          <button onclick="window.open('/diagnose', '_blank')">Abrir em Nova Aba</button>
         </div>
       </body>
       </html>
