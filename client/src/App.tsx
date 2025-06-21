@@ -10,6 +10,7 @@ import Dashboard from "@/pages/dashboard";
 import Accounts from "@/pages/accounts";
 import Transactions from "@/pages/transactions";
 import Cards from "@/pages/cards";
+import Categories from "@/pages/categories";
 import Forecasts from "@/pages/forecasts";
 import Simulations from "@/pages/simulations";
 import Reports from "@/pages/reports";
@@ -49,6 +50,11 @@ function Router() {
       <Route path="/cards">
         <ProtectedRoute>
           <Cards />
+        </ProtectedRoute>
+      </Route>
+      <Route path="/categories">
+        <ProtectedRoute>
+          <Categories />
         </ProtectedRoute>
       </Route>
       <Route path="/forecasts">

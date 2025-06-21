@@ -7,6 +7,7 @@ import {
   University, 
   ArrowRightLeft, 
   CreditCard, 
+  Tag,
   TrendingUp, 
   Calculator, 
   FileText,
@@ -18,6 +19,7 @@ const navigation = [
   { name: "Contas", href: "/accounts", icon: University },
   { name: "Transações", href: "/transactions", icon: ArrowRightLeft },
   { name: "Cartões", href: "/cards", icon: CreditCard },
+  { name: "Categorias", href: "/categories", icon: Tag },
   { name: "Previsões", href: "/forecasts", icon: TrendingUp },
   { name: "Simulações", href: "/simulations", icon: Calculator },
   { name: "Relatórios", href: "/reports", icon: FileText },
@@ -36,7 +38,7 @@ export function Sidebar() {
           </div>
           <div>
             <h2 className="text-lg font-semibold text-gray-900">FinanceControl</h2>
-            <p className="text-sm text-gray-500">{user?.name}</p>
+            <p className="text-sm text-gray-500">{user?.email}</p>
           </div>
         </div>
       </div>
