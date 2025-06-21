@@ -41,7 +41,7 @@ export default function Dashboard() {
               </Button>
               <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
                 <span className="text-white text-sm font-medium">
-                  {user?.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                  {user?.email.charAt(0).toUpperCase()}
                 </span>
               </div>
             </div>
