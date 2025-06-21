@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste - Sistema Financeiro</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        p {
+            color: #666;
+            font-size: 1.1rem;
+            margin: 15px 0;
+        }
+        .status {
+            background: #e8f5e8;
+            color: #2d5d2d;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #4CAF50;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sucesso!</h1>
+        <div class="status">
+            Aplicação carregando corretamente
+        </div>
+        <p>O servidor está funcionando perfeitamente!</p>
+        <p>Sistema Financeiro - Teste de Conectividade</p>
+        
+        <button onclick="alert('JavaScript funcionando!')">Testar JS</button>
+        <button onclick="window.location.href='/'">Ir para App Principal</button>
+        
+        <div style="margin-top: 30px; font-size: 0.9rem; color: #999;">
+            <p>Data/Hora: <span id="datetime"></span></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('datetime').textContent = new Date().toLocaleString('pt-BR');
+        console.log('Página de teste carregada com sucesso!');
+    </script>
+</body>
+</html>
